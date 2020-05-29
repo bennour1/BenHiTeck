@@ -56,10 +56,16 @@ class Produit
      */
     private $categorie;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Variante::class, mappedBy="produit", orphanRemoval=true)
+     */
+    private $variantes;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->variantes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +191,37 @@ class Produit
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Variante[]
+     */
+    public function getVariantes(): Collection
+    {
+        return $this->variantes;
+    }
+
+    public function addVariante(Variante $variante): self
+    {
+        if (!$this->variantes->contains($variante)) {
+            $this->variantes[] = $variante;
+            $variante->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVariante(Variante $variante): self
+    {
+        if ($this->variantes->contains($variante)) {
+            $this->variantes->removeElement($variante);
+            // set the owning side to null (unless already changed)
+            if ($variante->getProduit() === $this) {
+                $variante->setProduit(null);
+            }
+        }
 
         return $this;
     }

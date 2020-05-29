@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +39,16 @@ class Commande
      * @ORM\OneToOne(targetEntity=BonDeLivraison::class, mappedBy="commande", cascade={"persist", "remove"})
      */
     private $bonDeLivraison;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LigneDeCommande::class, mappedBy="commande")
+     */
+    private $ligneDeCommandes;
+
+    public function __construct()
+    {
+        $this->ligneDeCommandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -96,6 +108,37 @@ class Commande
         // set the owning side of the relation if necessary
         if ($bonDeLivraison->getCommande() !== $this) {
             $bonDeLivraison->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LigneDeCommande[]
+     */
+    public function getLigneDeCommandes(): Collection
+    {
+        return $this->ligneDeCommandes;
+    }
+
+    public function addLigneDeCommande(LigneDeCommande $ligneDeCommande): self
+    {
+        if (!$this->ligneDeCommandes->contains($ligneDeCommande)) {
+            $this->ligneDeCommandes[] = $ligneDeCommande;
+            $ligneDeCommande->setCommande($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneDeCommande(LigneDeCommande $ligneDeCommande): self
+    {
+        if ($this->ligneDeCommandes->contains($ligneDeCommande)) {
+            $this->ligneDeCommandes->removeElement($ligneDeCommande);
+            // set the owning side to null (unless already changed)
+            if ($ligneDeCommande->getCommande() === $this) {
+                $ligneDeCommande->setCommande(null);
+            }
         }
 
         return $this;

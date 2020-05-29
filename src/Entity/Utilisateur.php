@@ -75,6 +75,11 @@ class Utilisateur
      */
     private $commandes;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telephone;
+
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
@@ -232,6 +237,18 @@ class Utilisateur
                 $commande->setUtilisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }
