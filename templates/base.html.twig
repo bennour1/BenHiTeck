@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Produits Informatique{% endblock %}</title>
+    <!-- pour _navbar_1.html.twig
+    <link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
+    -->
+    <!-- pour _navbar1.html.twig-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="container-fluid body">
+<!--Ajouter la bare de navigation -->
+{% include '_navbar.html.twig' %}
+<br><br><br><br><br><br>
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}{% endblock %}
+</body>
 </html>
+
