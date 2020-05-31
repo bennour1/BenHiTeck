@@ -15,3 +15,6 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 public/ImageBenHiTeck
+public/ImageCouverture
+public/Logo
+public/Video_Pub

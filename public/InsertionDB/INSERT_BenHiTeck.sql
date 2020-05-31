@@ -177,32 +177,35 @@ insert into image (id, nom_image, master, produit_id) VALUES
 
 -- Contenu de la table variante
 truncate table variante;
-insert into variante (produit_id, core, espace_disque, couleur, qte_stoque, memoire, prix) VALUES
+insert into variante (produit_id, core, espace_disque, couleur, qte_stoque, memoire, prix, master, remise) VALUES
 -- 1 Ordinateurs
-(1, 'i5', '512Go', 'NOIRE', 100, 30, 300),	(1, 'i5', '512Go', 'BLANC', 50, 30, 400),
+(1, 'i5', '512 Go', 'NOIRE', 100, '10 Go', 300, 1, 10),	(1, 'i5', '512 Go', 'BLANC', 50, '30 Go', 400, 0, 20),
 
-(2, 'i5', '512Go', 'NOIRE', 20, 30, 235),	(2, 'i5', '512Go', 'NOIRE', 20, 30, 800),	(2, 'i7', '512Go', 'NOIRE', 30, 30, 900),	
-(3, 'i5', '512Go', 'NOIRE', 30, 30, 767),	
-(4, 'i7', '512Go', 'BLEU', 40, 30, 532),	
+(2, 'i5', '512 Go', 'NOIRE', 20, '10 Go', 235, 1, 10),	(2, 'i5', '512 Go', 'NOIRE', 20, '20 Go', 800, 0, 20),	(2, 'i7', '512 Go', 'NOIRE', 30, '110 Go', 900, 0, 30),	
+(3, 'i5', '512 Go', 'NOIRE', 30, '110 Go', 767, 1, 10),	
+(4, 'i7', '512 Go', 'BLEU', 40, '120 Go', 532, 1, 10),	
 
 -- 2 Smartphones	
-(5, null, '256Go', 'NOIRE', 50, 30, 123),		(5, null, '256Go', 'BLEU', 50, 30, 556),
-(6, null, '128Go', 'NOIRE',  60, 30, 643),		(6, null, '512Go', 'NOIRE', 60, 30, 754),
-(7, null, '512Go', 'NOIRE', 70, 30, 980),		(7, null, '512Go', 'BLANC', 70, 30, 765),
-(8, null, '512Go', 'NOIRE', 80, 30, 654),		(8, null, '128Go', 'ROSE', 30, 30, 654),
+(5, null, '256 Go', 'NOIRE', 50, '90 Go', 123, 1, 10),		(5, null, '256 Go', 'BLEU', 50, '30 Go', 556, 0, 20),
+(6, null, '128 Go', 'NOIRE',  60, '90 Go', 643, 1, 10),		(6, null, '512 Go', 'NOIRE', 30, '10 Go', 754, 0, 20),
+(7, null, '512 Go', 'NOIRE', 70, '60 Go', 980, 1, 10),		(7, null, '512 Go', 'BLANC', 70, '50 Go', 765, 0, 20),
+(8, null, '512 Go', 'NOIRE', 80, '70 Go', 654, 1, 10),		(8, null, '128 Go', 'ROSE', 30, '80 Go', 654, 0, 20),
 
 -- 3 Tablettes
-(9, null, '16Go', 'NOIRE', 30, 30, 432),	(10, null, '32Go', 'NOIRE', 40, 30, 643),	(11, null, '64Go', 'NOIRE', 60, 30, 987),		
-(12, null, '16Go', 'NOIRE', 20, 30, 654),	(12, null, '16Go', 'GRIS', 20, 30, 432),
+(9, null, '16 Go', 'NOIRE', 30, '10 Go', 432, 1, 10),	(9, null, '32 Go', 'NOIRE', 40, '20 Go', 643, 0, 20),	(9, null, '64 Go', 'NOIRE', 60, '40 Go', 987, 0, 20),		
+(10, null, '16 Go', 'NOIRE', 20, '70 Go', 654, 1, 10),	(10, null, '16 Go', 'GRIS', 20, '80 Go', 432, 0, 20),
+(11, null, '32 Go', 'BLEU', 20, '100 Go', 1032, 1, 30),
+
 
 -- 4 Montres connectées
-(13, null, null, 'NOIRE', 20, NULL, 654),	(13, null, NULL, 'GOLD', 20, NULL, 6456),	(13, null, NULL, 'ARGENT', 20, NULL, 765),	
-(14, null, NULL, 'NOIRE', 20, NULL, 876),
+(12, null, null, 'BLANC', 20, NULL, 654, 1, 10), 	(12, null, null, 'NOIRE', 20, NULL, 654, 0, 10),
+(13, null, null, 'NOIRE', 20, NULL, 654, 1, 10),	(13, null, NULL, 'GOLD', 20, NULL, 6456, 0, 20),	(13, null, NULL, 'ARGENT', 20, NULL, 765, 0, 20),	
+(14, null, NULL, 'NOIRE', 20, NULL, 876, 1, 10),
 
 -- 5 Accessoires
-(15, null, null, 'NOIRE', 20, NULL, 765),	(15, null, null, 'BLANC', 20, NULL, 432),		(15, null, null, 'GRIS', 20, NULL, 321),	
-(16, null, null, 'NOIRE', 20, NULL, 765),		(16, null, null, 'BLANC', 20, NULL, 765),	
-(17, null, null, 'NOIRE', 20, NULL, 645)
+(15, null, null, 'NOIRE', 20, NULL, 765, 1, 10),	(15, null, null, 'BLANC', 20, NULL, 432, 0, 20),		(15, null, null, 'GRIS', 20, NULL, 321, 0, 20),	
+(16, null, null, 'NOIRE', 20, NULL, 765, 1, 10),		(16, null, null, 'BLANC', 20, NULL, 765, 0, 20),	
+(17, null, null, 'NOIRE', 20, NULL, 645, 1, 10)
 ;
 
 -- Contenu de la table ligne_de_commande

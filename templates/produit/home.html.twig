@@ -1,15 +1,48 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Bienvenue dans le site e-commerce<span style="color: #F5871F" > BenHiTeck</span> vente des produis informatique</h1>
+    <body style="background-color: white">
+    <center><h1>Bienvenue dans le site e-commerce<span style="color: #ffc107" ><strong> BenHiTeck&#x00AE;</strong></span> vente des produis informatique</h1>
+    </center>
+    <hr>
     <br>
-    <h2>{{ titre }}</h2>
+   <center>
+       <!-- <h2>{{ titre }}</h2> -->
+       <h2>J'ai choisi pour vous les bon produit avec des<strong> meilleur prix</strong></h2>
+       <br>
+       <video height=400 width=1000 controls autoplay muted>
+           <source src="\Video_Pub\PubGalaxyNote_10.mp4" type="video/mp4">
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolorum explicabo fugiat quam, quod rerum sint
-        tempore. Cumque dolore, eaque enim eos error explicabo id ipsum laborum laudantium molestiae nesciunt nulla
-        obcaecati, optio quaerat, quo sed sit suscipit temporibus veniam.
-    </p>
+       </video>
+       <div style="background-color: #343a40; horiz-align: left">
+    <div>
+        <a href="{{ path('liste_produits_par_categorie', {'categorie':'5'}) }}"><img style="box-shadow: 1px 1px 12px #555;" src="ImageCouverture\pc_coverture_3.jpg" height="370" width="530" alt="image"></a>
+    </div>
+       <br>
+       <div>
+    <a href="{{ path('liste_produits_par_categorie', {'categorie':'4'}) }}"><img style="box-shadow: 1px 1px 12px #555;" src="ImageCouverture\montre_coverture.jpg" height="390" width="900"alt="image"></a>
+       </div>
+       <br>
+       <div>
+           <a href="{{ path('liste_produits_par_categorie', {'categorie':'1'}) }}"><img style="box-shadow: 1px 1px 12px #555;" src="ImageCouverture\pc_coverture.jpg" height="370" width="530" alt="image"></a>
+       </div>
+           <br>
+           <div>
+               <a href="{{ path('liste_produits_par_categorie', {'categorie':'5'}) }}"><img style="box-shadow: 1px 1px 12px #555;" src="ImageCouverture\accessoire_couv.JPG" height="370" width="530" alt="image"></a>
+           </div>
+       </div>
+       <br>
+       <video height=400 width=1000 controls autoplay muted>
+           <source src="\Video_Pub\PubWatchSamsungGalaxy.mp4" type="video/mp4">
 
+       </video>
+   </center>
 
-    <h2>chez<span style="color: #F5871F" > BenHiTeck</span> vous trouvee toujour des bon plans</h2>
+    <br><br>
+    <hr>
+<center>
+    <h2>Chez<span style="color: #ffc107" ><strong> BenHiTeck&#x00AE;</strong></span> vous trouvee toujour des <strong>Bons plans</strong></h2>
+</center>
+    <hr>
+    </body>
 {% endblock %}

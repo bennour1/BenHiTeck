@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Hello ProduitController!{% endblock %}
 {% block body %}
-    <h1>Bien venu dans votre site BenHiTeck</h1>
+    <h1>Bien venu dans votre site<span style="color: #ffc107"><strong> BenHiTeck&#x00AE;</strong></span></h1>
     <br><br>
     {#
     (article>h2{Titre de l'article}+div.metadata{Ecrit le 07/05/2020 à 16:00 dans la catégorie Homme}+div.content>img+(p>lorem10)*2+a.btn.btn-primary{Lire la suite})*3
@@ -16,36 +16,48 @@
                 <br> <br> <br>
                 <p>Marque : {{ article.marque.nomMarque }}</p>
                 <p>Categorie : {{ article.categorie.nomCategorie }}</p>
+                {% for variante in article.getVariantes() %}
+                    <p>Core : {{ variante.core }}</p>
+                    <p>Mémoire : {{ variante.memoire }}</p>
+                    <p>Espace disuqe : {{ variante.espaceDisque }}</p>
+                    <p>Couleur : {{ variante.couleur }}</p>
+                    <p>Stock : {{ variante.qteStoque }}</p>
+                    <p>Prix : {{ variante.prix }} €</p>
+                    <p>Remise : {{ variante.remise }} %</p>
+                    <p>Nouveau prix : {{ variante.prix - (variante.prix * variante.remise)/100 }} €</p>
+                {% endfor %}
+                {#
                 <p>Core : {{ article.getVariantes()[0].core }}</p>
                 <p>Mémoire : {{ article.getVariantes()[0].memoire }}</p>
                 <p>Espace disuqe : {{ article.getVariantes()[0].espaceDisque }}</p>
                 <p>Couleur : {{ article.getVariantes()[0].couleur }}</p>
                 <p>Stock : {{ article.getVariantes()[0].qteStoque }}</p>
                 <p>Prix : {{ article.getVariantes()[0].prix }}</p>
-                {#
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>Core</th>
-                        <th>Mémoire</th>
-                        <th>Espace disuqe</th>
-                        <th>Couleur</th>
-                        <th>Stock</th>
-                        <th>Prix</th>
-                    </tr>
-                    {% for variante in article.getVariantes() %}
-                        <tr>
-                            <td>{{ variante.core}}</td>
-                            <td>{{ variante.memoire }}</td>
-                            <td>{{ variante.espaceDisque }}</td>
-                            <td>{{ variante.couleur }}</td>
-                            <td>{{ variante.qteStoque }}</td>
-                            <td>{{ variante.prix }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-                #}
+
+
+<table class="table table-bordered table-striped">
+   <tr>
+       <th>Core</th>
+       <th>Mémoire</th>
+       <th>Espace disuqe</th>
+       <th>Couleur</th>
+       <th>Stock</th>
+       <th>Prix</th>
+   </tr>
+   {% for variante in article.getVariantes() %}
+       <tr>
+           <td>{{ variante.core}}</td>
+           <td>{{ variante.memoire }}</td>
+           <td>{{ variante.espaceDisque }}</td>
+           <td>{{ variante.couleur }}</td>
+           <td>{{ variante.qteStoque }}</td>
+           <td>{{ variante.prix }}</td>
+       </tr>
+   {% endfor %}
+</table>
+#}
                 <div>
-                    <a href="#" class="btn btn-info" style="color: #F5871F">Lire la suite</a>
+                    <a href="#" class="btn btn-warning" style="color: white"> <strong>D É C O U V R I R </strong></a>
                 </div>
                 <hr>
             </div>

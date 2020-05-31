@@ -60,6 +60,16 @@ class Variante
      */
     private $qteStoque;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $master;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $remise;
+
     public function __construct()
     {
         $this->ligneDeCommandes = new ArrayCollection();
@@ -82,7 +92,7 @@ class Variante
         return $this;
     }
 
-    public function getMemoire(): ?int
+    public function getMemoire(): ?string
     {
         return $this->memoire;
     }
@@ -181,6 +191,30 @@ class Variante
     public function setQteStoque(int $qteStoque): self
     {
         $this->qteStoque = $qteStoque;
+
+        return $this;
+    }
+
+    public function getMaster(): ?string
+    {
+        return $this->master;
+    }
+
+    public function setMaster(string $master): self
+    {
+        $this->master = $master;
+
+        return $this;
+    }
+
+    public function getRemise(): ?int
+    {
+        return $this->remise;
+    }
+
+    public function setRemise(int $remise): self
+    {
+        $this->remise = $remise;
 
         return $this;
     }
