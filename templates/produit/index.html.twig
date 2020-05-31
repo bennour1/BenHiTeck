@@ -2,6 +2,7 @@
 {% block title %}Hello ProduitController!{% endblock %}
 {% block body %}
     <h1>Bien venu dans votre site<span style="color: #ffc107"><strong> BenHiTeck&#x00AE;</strong></span></h1>
+    <hr color="#222222">
     <br><br>
     {#
     (article>h2{Titre de l'article}+div.metadata{Ecrit le 07/05/2020 à 16:00 dans la catégorie Homme}+div.content>img+(p>lorem10)*2+a.btn.btn-primary{Lire la suite})*3
@@ -57,7 +58,8 @@
 </table>
 #}
                 <div>
-                    <a href="#" class="btn btn-warning" style="color: white"> <strong>D É C O U V R I R </strong></a>
+                    {# pour activer la bouton decouvrir =>{{ path('afficher_un_produit', {'id': article.id}) }}#}
+                    <a href="{{ path('afficher_un_produit', {'id': article.id}) }}" class="btn btn-warning" style="color: white"> <strong>D É C O U V R I R </strong></a>
                 </div>
                 <hr>
             </div>

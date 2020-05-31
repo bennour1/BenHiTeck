@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Image;
 use App\Entity\Produit;
+use App\Entity\Variante;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,6 +50,30 @@ class ProduitController extends AbstractController
         */
         return $this->render('produit/index.html.twig', [
             'articles' => $articles,
+        ]);
+
+    }
+    /**
+     * Qand on click sur lire la suite au découvrir on afiche le produit
+     *@Route("/produit/{id}", name="afficher_un_produit")
+     */
+    public function afficherUnProduit($id){
+        // Trouver le produit séléctionner
+        $repo = $this->getDoctrine()->getRepository(Produit::class);
+        $unArticle = $repo->find($id);
+        //dd($unArticle);
+        // Les images de mon produit
+        $repoImage = $this->getDoctrine()->getRepository(Image::class);
+        $imagesProduit = $repoImage->findBy(array('produit' => $unArticle));
+        //dd($imagesProduit);
+        // Liste des variantes pour chaque produit
+        $repVariante = $this->getDoctrine()->getRepository(Variante::class);
+        $varianteProduit = $repVariante->findBy(array('produit' => $unArticle));
+        // dd($varianteProduit);
+        return $this->render('produit/afficherUnProduit.html.twig', [
+            'unArticle' => $unArticle,
+            'imagesProduit' => $imagesProduit,
+            'varianteProduit' => $varianteProduit
         ]);
     }
 }
