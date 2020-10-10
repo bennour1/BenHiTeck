@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h2>{{ unArticle.nomProduit }}</h2>
+        <div class="container">
+            <div class="row">
+                {% for image in imagesProduit %}
+                    <div>
+                        <a href="/ImageBenHiTeck/{{ image.getNomImage() }}" class="thumbnail">
+                            <img src="/ImageBenHiTeck/{{ image.getNomImage() }}"
+                                 alt="{{ image.nomImage }}"
+                                 width="200" height="200"
+                            />
+                        </a>
+                        {#
+                        <img src="/ImageProduitsInformatique/{{ image.getNomImage() }}"
+                             alt="{{ image.nomImage }}"
+                             width="200" height="200"
+                             id="photo"
+                             onClick="document.getElementById('photo').style.width='700px';"
+                             ondblclick="document.getElementById('photo').style.width='200px';"
+                        />
+                        #}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <p>{{ unArticle.description | raw }}</p>
+        <hr>
+        {# <p>{{ unArticle.motRecherche }}</p> #}
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Core</th>
+                <th>Mémoire</th>
+                <th>Espace disuqe</th>
+                <th>Couleur</th>
+                <th>Stock</th>
+                <th>Prix</th>
+                <th>Remise</th>
+                <th>Nouveau prix</th>
+                <th>Action</th>
+            </tr>
+
+            {% for variante in varianteProduit %}
+                <tr>
+                    <td style="text-align: center">
+                        {% if variante.core is empty  %}
+                            -
+                        {% else %}
+                            {{ variante.core}}
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center">
+                        {% if variante.memoire is empty  %}
+                            -
+                        {% else %}
+                            {{ variante.memoire }}
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center">
+                        {% if variante.espaceDisque is empty  %}
+                            -
+                        {% else %}
+                            {{ variante.espaceDisque }}
+                        {% endif %}
+                    </td>
+                    <td>{{ variante.couleur }}</td>
+                    <td>{{ variante.qteStoque }}</td>
+                    <td>{{ variante.prix }} €</td>
+                    <td>{{ variante.remise }} %</td>
+                    <td>{{ variante.prix - (variante.prix * variante.remise)/100 }} €</td>
+
+                    <td>
+                        <a href="{{ path('chariot_ajouter', {'id': variante.id}) }}" class="btn btn-success float-left">
+                            <!-- https://icons.getbootstrap.com/ -->
+                            <svg class="bi bi-cart3" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                            </svg>
+                            Ajouter
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </article>
+{% endblock %}
