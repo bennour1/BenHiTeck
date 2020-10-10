@@ -41,17 +41,22 @@
                     S'inscrire/Se connecter
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                     {% if not app.user %}
-                        <a class="dropdown-item" href="#">Inscription</a>
+                        <a class="dropdown-item" href="{{ path('inscription_utilisateur') }}">Inscription</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Connexion</a>
+                        <a class="dropdown-item" href="{{ path('connexion_utilisateur') }}">Connexion</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('afficher_produits') }}">Administration du site</a>
                     {% else %}
-                        <a class="dropdown-item" href="#">#</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Déconnexion</a>
+                        <a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Modification compte</a>
+                        <a class="dropdown-item" href="{{ path('modifier_utilisateur' , {'id': app.user.id}) }}">Modification compte</a>
                     {% endif %}
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('afficher_produits') }}">Administration du site</a>
                 </div>
             </li>
             <li class="nav-item">
